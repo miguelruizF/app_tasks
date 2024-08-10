@@ -6,6 +6,9 @@ import { Task } from "../../models/task.class"
 import TaskComponent from "../pure/Task";
 import { useEffect } from "react";
 
+//importar hoja de estilos task.scss
+import '../../styles/task.scss'
+
 export const Task_ListComponent = () => {
 
     const defaultTask = new Task('Example', 'Default Description', false, LEVELS.NORMAL);
