@@ -5,6 +5,7 @@ import { LEVELS } from "../../models/levels.enum";
 import { Task } from "../../models/task.class"
 import TaskComponent from "../pure/Task";
 import { useEffect } from "react";
+import { Table } from "react-bootstrap";
 
 //importar hoja de estilos task.scss
 import '../../styles/task.scss'
@@ -35,11 +36,33 @@ export const Task_ListComponent = () => {
 
     return (
         <div>
-            <div>
-                <h1>Your Tasks: </h1>
+            <div className="col-12">
+                <div className="card">
+                    {/* Card Header (title) */}
+                    <div className="card-header p-3">
+                        <h5>Your Tasks: </h5>
+                    </div>
+                    {/* Card body (contenido) */}
+                    <div className="card-body" style={ {position:'relative', height: '400px'} } data-mdb-perfect-scrollbar='true'>
+                        <Table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Priority</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {/* TODO: Iterar sobre una lista de tareas */}
+                                <TaskComponent task={defaultTask}/>
+                            </tbody>
+                        </Table>
+                    </div>
+                </div>
             </div>
             {/* TODO: Aplicar un for/map para renderizar una lista de tareas*/}
-            <TaskComponent task={defaultTask}/>
+            {/* <TaskComponent task={defaultTask}/> */}
         </div>
     )
 }
