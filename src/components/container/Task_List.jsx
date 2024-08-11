@@ -15,22 +15,22 @@ export const Task_ListComponent = () => {
     const defaultTask = new Task('Example', 'Default Description', false, LEVELS.NORMAL);
     
     //Estado que modificara las tareas. Estado del componente
-    const [tasks, setTasks] = useState([defaultTask]);
+    const [ tasks, setTasks ] = useState([ defaultTask ]);
 
     //true: cargara por defecto | false: para de cargar
-    const [loading, setLoading] = useState(true);
+    const [ loading, setLoading ] = useState( true );
 
     //Control del ciclo de vida del componente
     useEffect(() => {
-        console.log('Task state has been modified');
-        setLoading(false);
+        console.log( 'Task state has been modified' );
+        setLoading( false );
         return () => {
-            console.log('TaskList component is going to unmount...');
+            console.log( 'TaskList component is going to unmount...' );
         }
     }, [tasks]);
     
 
-    const changeCompleted = (id) =>{
+    const changeCompleted = ( id ) =>{
         console.log('TODO: Cambiar estado de una tarea');
     }
 
@@ -43,7 +43,7 @@ export const Task_ListComponent = () => {
                         <h5>Your Tasks: </h5>
                     </div>
                     {/* Card body (contenido) */}
-                    <div className="card-body" style={ {position:'relative', height: '400px'} } data-mdb-perfect-scrollbar='true'>
+                    <div className="card-body" style={ { position:'relative', height: '400px' } } data-mdb-perfect-scrollbar='true'>
                         <Table>
                             <thead>
                                 <tr>
@@ -55,7 +55,7 @@ export const Task_ListComponent = () => {
                             </thead>
                             <tbody>
                                 {/* TODO: Iterar sobre una lista de tareas */}
-                                <TaskComponent task={defaultTask}/>
+                                <TaskComponent task={ defaultTask }/>
                             </tbody>
                         </Table>
                     </div>

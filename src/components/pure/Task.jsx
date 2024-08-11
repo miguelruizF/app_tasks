@@ -13,25 +13,28 @@ const TaskComponent = ({ task }) => {
         return () => {
             console.log(`Task: ${ task.name } is going to unmount...`);
         }
-    }, [task]);
+    }, [ task ]);
     
 
     return (
         <>
             <tr className='fw-normal'>
                 <th>
-                    <span className='ms-2'>{task.name}</span>
+                    <span className='ms-2'>{ task.name }</span>
                 </th>
                 <td className='align-middle'>
-                    <span>{task.description}</span>
+                    <span>{ task.description }</span>
                 </td>
                 <td className='align-middle'>
                     {/* TODO: sustituir por un badge */}
-                    <span>{task.level}</span>
+                    <span>{ task.level }</span>
                 </td>
                 {/* TODO: Sustituir por iconos */}
                 <td className='align-middle'>
-                    <span>{task.completed}</span>
+                    { task.completed ? 
+                        (<i className='bi-toggle-on' style={ { color:'green', fontWeight: 'bold' } }></i>) : ( <i className='bi-toggle-off' style={ {color:'gray', fontWeight: 'bold' } }></i> )
+                    }
+                    {/* <span>{ task.completed ? 'Completed' : 'Pending' }</span> */}
                 </td>
             </tr>
             {/* <div>
@@ -47,7 +50,7 @@ const TaskComponent = ({ task }) => {
 }
 
 TaskComponent.propTypes = {
-    task: PropTypes.instanceOf(Task)
+    task: PropTypes.instanceOf( Task )
 }
 
 export default TaskComponent
