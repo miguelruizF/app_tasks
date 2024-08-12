@@ -9,13 +9,16 @@ import { Table } from "react-bootstrap";
 
 //importar hoja de estilos task.scss
 import '../../styles/task.scss'
+import { TaskForm } from "../pure/forms/TaskForm";
 
 export const Task_ListComponent = () => {
 
-    const defaultTask = new Task('Example', 'Default Description', false, LEVELS.NORMAL);
+    const defaultTask1 = new Task('Example1', 'Description 1', true, LEVELS.NORMAL);
+    const defaultTask2 = new Task('Example2', 'Description 2', false, LEVELS.URGENT);
+    const defaultTask3 = new Task('Example3', 'Description 3', false, LEVELS.BLOCKING);
     
     //Estado que modificara las tareas. Estado del componente
-    const [ tasks, setTasks ] = useState([ defaultTask ]);
+    const [ tasks, setTasks ] = useState([ defaultTask1, defaultTask2, defaultTask3 ]);
 
     //true: cargara por defecto | false: para de cargar
     const [ loading, setLoading ] = useState( true );
@@ -55,10 +58,15 @@ export const Task_ListComponent = () => {
                             </thead>
                             <tbody>
                                 {/* TODO: Iterar sobre una lista de tareas */}
-                                <TaskComponent task={ defaultTask }/>
+                                {tasks.map((task, index) => {
+                                    return(
+                                        <TaskComponent key={index} task={ task }/>
+                                    )
+                                } )}
                             </tbody>
                         </Table>
                     </div>
+                    {/* <TaskForm/> */}
                 </div>
             </div>
             {/* TODO: Aplicar un for/map para renderizar una lista de tareas*/}
