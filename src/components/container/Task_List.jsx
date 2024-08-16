@@ -31,10 +31,16 @@ export const Task_ListComponent = () => {
             console.log( 'TaskList component is going to unmount...' );
         }
     }, [tasks]);
-    
 
-    const changeCompleted = ( id ) =>{
-        console.log('TODO: Cambiar estado de una tarea');
+    //Funcion de tarea completada
+    function completedTask(task) {
+        console.log(`Tarea completada`, task);
+        const index = tasks.indexOf(task); //Buscamos el indice de la tarea
+        const tempTask = [...tasks]; //Creamos una copia de todas las tareas
+
+        tempTask[index].completed = !tempTask[index].completed;
+        //Update the state of the component with the new list of tasks and it will update the iteration of the task in order to show the task updated
+        setTasks(tempTask);
     }
 
     return (
@@ -60,17 +66,18 @@ export const Task_ListComponent = () => {
                                 {/* TODO: Iterar sobre una lista de tareas */}
                                 {tasks.map((task, index) => {
                                     return(
-                                        <TaskComponent key={index} task={ task }/>
+                                        <TaskComponent 
+                                        key={index} 
+                                        task={ task } 
+                                        complete={ completedTask }
+                                        />
                                     )
                                 } )}
                             </tbody>
                         </Table>
                     </div>
-                    {/* <TaskForm/> */}
                 </div>
             </div>
-            {/* TODO: Aplicar un for/map para renderizar una lista de tareas*/}
-            {/* <TaskComponent task={defaultTask}/> */}
         </div>
     )
 }

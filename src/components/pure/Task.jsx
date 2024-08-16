@@ -8,7 +8,7 @@ import '../../styles/task.scss'
 import { LEVELS } from '../../models/levels.enum'
 import { Badge } from 'react-bootstrap'
 
-const TaskComponent = ({ task }) => {
+const TaskComponent = ({ task, complete }) => {
 
     useEffect(() => {
         console.log('Created task');
@@ -16,7 +16,7 @@ const TaskComponent = ({ task }) => {
             console.log(`Task: ${ task.name } is going to unmount...`);
         }
     }, [ task ]);
-    
+
     //Function that returns a Badge depending on the level of the task
     function taskLevelBadge() {
         switch (task.level) {
@@ -49,9 +49,9 @@ const TaskComponent = ({ task }) => {
     //Function that returns icon depending if task is completed or not
     function taskCompĺetedIcon() {
         if( task.completed ){
-            return( <i className='bi-toggle-on' style={ { color:'green', fontWeight: 'bold', cursor: 'pointer' } }></i> )
+            return( <i onClick={ () => complete(task) } className='bi-toggle-on task-action' style={ { color:'green', fontWeight: 'bold' } }></i> )
         }else{
-            return( <i className='bi-toggle-off' style={ {color:'gray', fontWeight: 'bold', cursor: 'pointer' } }></i> )
+            return( <i onClick={ () => complete(task) } className='bi-toggle-off task-action' style={ {color:'gray', fontWeight: 'bold' } }></i> )
         }
     }
 
@@ -65,8 +65,6 @@ const TaskComponent = ({ task }) => {
                     <span>{ task.description }</span>
                 </td>
                 <td className='align-middle'>
-                    {/* TODO: sustituir por un badge */}
-                    {/* <span>{ task.level }</span> */}
                     {/* Execution of function to return badge element */}
                     { taskLevelBadge() } 
                 </td>
@@ -75,7 +73,7 @@ const TaskComponent = ({ task }) => {
                     {/* Execution of function to return icon depending on completion */}
                     { taskCompĺetedIcon() }
                     {/* <span>{ task.completed ? 'Completed' : 'Pending' }</span> */}
-                    <i className='bi-trash' style={ { color: 'tomato', fontSize: '20px', cursor: 'pointer' } }></i>
+                    <i className='bi-trash task-action' style={ { color: 'tomato', fontSize: '20px' } }></i>
                 </td>
             </tr>
         </>
@@ -83,7 +81,8 @@ const TaskComponent = ({ task }) => {
 }
 
 TaskComponent.propTypes = {
-    task: PropTypes.instanceOf( Task )
+    task: PropTypes.instanceOf( Task ),
+    complete: PropTypes.func.isRequired
 }
 
 export default TaskComponent
