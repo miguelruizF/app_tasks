@@ -8,7 +8,7 @@ import '../../styles/task.scss'
 import { LEVELS } from '../../models/levels.enum'
 import { Badge } from 'react-bootstrap'
 
-const TaskComponent = ({ task, complete }) => {
+const TaskComponent = ({ task, complete, remove }) => {
 
     useEffect(() => {
         console.log('Created task');
@@ -73,7 +73,7 @@ const TaskComponent = ({ task, complete }) => {
                     {/* Execution of function to return icon depending on completion */}
                     { taskCompĺetedIcon() }
                     {/* <span>{ task.completed ? 'Completed' : 'Pending' }</span> */}
-                    <i className='bi-trash task-action' style={ { color: 'tomato', fontSize: '20px' } }></i>
+                    <i className='bi-trash task-action' style={ { color: 'tomato', fontSize: '20px' } } onClick={ () => remove(task) }></i>
                 </td>
             </tr>
         </>
@@ -82,7 +82,8 @@ const TaskComponent = ({ task, complete }) => {
 
 TaskComponent.propTypes = {
     task: PropTypes.instanceOf( Task ),
-    complete: PropTypes.func.isRequired
+    complete: PropTypes.func.isRequired,
+    remove: PropTypes.func.isRequired
 }
 
 export default TaskComponent
