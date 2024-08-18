@@ -9,6 +9,7 @@ import { Table } from "react-bootstrap";
 
 //importar hoja de estilos task.scss
 import '../../styles/task.scss'
+import { TaskForm } from "../pure/forms/TaskForm";
 // import { TaskForm } from "../pure/forms/TaskForm";
 
 export const Task_ListComponent = () => {
@@ -52,10 +53,18 @@ export const Task_ListComponent = () => {
         setTasks(tempTask);
     }
 
+    function addTask(task) {
+        console.log(`Tarea eliminada`, task);
+        // const index = tasks.indexOf(task); //Buscamos el indice de la tarea
+        const tempTask = [...tasks]; //Creamos una copia de todas las tareas
+        tempTask.push(task);
+        setTasks(tempTask);
+    }
+
     return (
         <div>
             <div className="col-12">
-                <div className="card">
+                <div className="card mb-3">
                     {/* Card Header (title) */}
                     <div className="card-header p-3">
                         <h5>Your Tasks: </h5>
@@ -87,6 +96,7 @@ export const Task_ListComponent = () => {
                         </Table>
                     </div>
                 </div>
+                <TaskForm add={ addTask }></TaskForm>
             </div>
         </div>
     )
