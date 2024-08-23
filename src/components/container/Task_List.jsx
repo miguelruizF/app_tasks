@@ -1,15 +1,14 @@
 // import React from 'react'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LEVELS } from "../../models/levels.enum";
 import { Task } from "../../models/task.class"
 import TaskComponent from "../pure/Task";
-import { useEffect } from "react";
 import { Table } from "react-bootstrap";
+import { TaskForm } from "../pure/forms/TaskForm";
 
 //importar hoja de estilos task.scss
 import '../../styles/task.scss'
-import { TaskForm } from "../pure/forms/TaskForm";
 // import { TaskForm } from "../pure/forms/TaskForm";
 
 export const Task_ListComponent = () => {
