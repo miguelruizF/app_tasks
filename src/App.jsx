@@ -5,13 +5,14 @@ import './App.css'
 // import { Ejemplo2 } from './hooks/Ejemplo2'
 // import { Ejempĺo1 } from './hooks/Ejempĺo1'
 import { Task_ListComponent } from './components/container/Task_List'
+import { OptionalRender } from './components/pure/OptionalRender'
 // import { GreetingStyled } from './components/pure/GreetingStyled'
 
 function App() {
   return (
     <>
       {/* Componente de listado de tareas */}
-      <Task_ListComponent />
+      {/* <Task_ListComponent /> */}
       {/* <Ejempĺo1/> */}
       {/*  <Ejemplo2/> */}
       {/* <MiComponenteConContexto/> */}
@@ -23,6 +24,9 @@ function App() {
 
       {/* Gestion de eventros */}
       {/* <Father/> */}
+
+      {/* Ejemplos de renderizado condicional */}
+      <OptionalRender/>
     </>
   )
 }
