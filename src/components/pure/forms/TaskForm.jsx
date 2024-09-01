@@ -27,7 +27,7 @@ export const TaskForm = ( { add } ) => {
         <Form onSubmit={ addTask } className="card">
             <Form.Group>
                 <Form.Control ref={ nameRed } id="inputName" type="text" required autoFocus placeholder="Enter name of task" className="mb-2"></Form.Control>
-                <Form.Control ref={ descriptionRef } id="inputDescription" type="text" required autoFocus placeholder="Enter the description of task" className="mb-2"></Form.Control>
+                <Form.Control ref={ descriptionRef } id="inputDescription" type="text" required placeholder="Enter the description of task" className="mb-2"></Form.Control>
                 <Form.Label htmlFor="selectLevel" className="sr-only fw-bold">Priority</Form.Label>
                 <Form.Select ref={ levelRef } defaultValue={ LEVELS.NORMAL } id="selectLevel">
                     <option value={ LEVELS.NORMAL }>Normal</option>

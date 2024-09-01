@@ -60,6 +60,47 @@ export const Task_ListComponent = () => {
         setTasks(tempTask);
     }
 
+    const ListTable = () => {
+        return (
+            <Table>
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Priority</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {/* TODO: Iterar sobre una lista de tareas */}
+                    {tasks.map((task, index) => {
+                        return(
+                            <TaskComponent 
+                            key={index} 
+                            task={ task } 
+                            complete={ completedTask }
+                            remove={ deletedTask }
+                            />
+                        )
+                    } )}
+                </tbody>
+            </Table>
+        )
+    }
+
+    let tasksTable = <ListTable></ListTable>
+
+    if ( tasks.length > 0 ) {
+        tasksTable = <ListTable></ListTable>
+    } else {
+        tasksTable = (
+            <div>
+                <h3>There are no tasks to show</h3>
+                <h4>Please, create one</h4>
+            </div>
+        )
+    }
+
     return (
         <div>
             <div className="col-12">
@@ -70,29 +111,7 @@ export const Task_ListComponent = () => {
                     </div>
                     {/* Card body (contenido) */}
                     <div className="card-body" style={ { position:'relative', height: '400px' } } data-mdb-perfect-scrollbar='true'>
-                        <Table>
-                            <thead>
-                                <tr>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Priority</th>
-                                    <th scope="col">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {/* TODO: Iterar sobre una lista de tareas */}
-                                {tasks.map((task, index) => {
-                                    return(
-                                        <TaskComponent 
-                                        key={index} 
-                                        task={ task } 
-                                        complete={ completedTask }
-                                        remove={ deletedTask }
-                                        />
-                                    )
-                                } )}
-                            </tbody>
-                        </Table>
+                        { tasksTable }
                     </div>
                 </div>
                 <TaskForm add={ addTask }></TaskForm>
