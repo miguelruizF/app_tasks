@@ -88,7 +88,7 @@ export const Task_ListComponent = () => {
         )
     }
 
-    let tasksTable = <ListTable></ListTable>
+    let tasksTable = <ListTable></ListTable> //Guardar lo que devuelva el componente y despues llamarlo a renderizar
 
     if ( tasks.length > 0 ) {
         tasksTable = <ListTable></ListTable>
@@ -114,7 +114,7 @@ export const Task_ListComponent = () => {
                         { tasksTable }
                     </div>
                 </div>
-                <TaskForm add={ addTask }></TaskForm>
+                <TaskForm add={ addTask } length={ tasks.length }></TaskForm>
             </div>
         </div>
     )

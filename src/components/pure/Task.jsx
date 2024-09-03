@@ -2,10 +2,10 @@
 import PropTypes from 'prop-types'
 import { Task } from '../../models/task.class'
 import { useEffect } from 'react'
-
+import { LEVELS } from '../../models/levels.enum'
 //Importar hoja de estilos task.scss
 import '../../styles/task.scss'
-import { LEVELS } from '../../models/levels.enum'
+
 import { Badge } from 'react-bootstrap'
 
 const TaskComponent = ({ task, complete, remove }) => {
@@ -55,9 +55,22 @@ const TaskComponent = ({ task, complete, remove }) => {
         }
     }
 
+    /*  const taskCompleted = {
+        color: 'grey',
+        textDecoration: 'line-through',
+        fontWeight: 'bold'
+    }
+
+    const taskPending = {
+        color: 'tomato',
+        fontWeight: 'bold'
+    } */
+
+
     return (
         <>
-            <tr className='fw-normal'>
+            <tr className={ task.completed ? 'task-completed' :  'task-pending' }>
+            {/* <tr style={ task.completed ? taskCompleted : taskPending }> */}
                 <th>
                     <span className='ms-2'>{ task.name }</span>
                 </th>

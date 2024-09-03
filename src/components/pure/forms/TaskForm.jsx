@@ -3,8 +3,9 @@ import { Button, Form } from "react-bootstrap"
 import PropTypes from 'prop-types'
 import { LEVELS } from "../../../models/levels.enum";
 import { Task } from "../../../models/task.class";
+import { SassColor } from "sass";
 
-export const TaskForm = ( { add } ) => {
+export const TaskForm = ( { add, length } ) => {
 
     //Referencias a los datos
     const nameRed = useRef('');
@@ -35,11 +36,14 @@ export const TaskForm = ( { add } ) => {
                     <option value={ LEVELS.BLOCKING }>Blocking</option>
                 </Form.Select>
             </Form.Group>
-            <Button type="submit" className="btn-primary mt-2">Add</Button>
+            <Button type="submit" className="btn-primary mt-2">
+                { length > 0 ? 'Add new task' : 'Create your first task' }
+            </Button>
         </Form>
     )
 }
 
 TaskForm.propTypes = {
-    add: PropTypes.func.isRequired
+    add: PropTypes.func.isRequired,
+    length: PropTypes.number.isRequired
 }
