@@ -9,6 +9,7 @@ import { TaskForm } from "../pure/forms/TaskForm";
 
 //importar hoja de estilos task.scss
 import '../../styles/task.scss'
+import { SassColor } from "sass";
 // import { TaskForm } from "../pure/forms/TaskForm";
 
 export const Task_ListComponent = () => {
@@ -26,7 +27,9 @@ export const Task_ListComponent = () => {
     //Control del ciclo de vida del componente
     useEffect(() => {
         console.log( 'Task state has been modified' );
-        setLoading( false );
+        setTimeout(() => {
+            setLoading( false );
+        }, 2000);
         return () => {
             console.log( 'TaskList component is going to unmount...' );
         }
@@ -101,6 +104,12 @@ export const Task_ListComponent = () => {
         )
     }
 
+    const loadingStyle = {
+        color: 'gray',
+        fontSize: '30px',
+        fontWeight: 'bold'
+    }
+
     return (
         <div>
             <div className="col-12">
@@ -111,7 +120,8 @@ export const Task_ListComponent = () => {
                     </div>
                     {/* Card body (contenido) */}
                     <div className="card-body" style={ { position:'relative', height: '400px' } } data-mdb-perfect-scrollbar='true'>
-                        { tasksTable }
+                        {/* TODO: Add loading spinner */}
+                        { loading ? (<p style={ loadingStyle }>Loading Tasks...</p>) : tasksTable }
                     </div>
                 </div>
                 <TaskForm add={ addTask } length={ tasks.length }></TaskForm>
