@@ -3,7 +3,6 @@ import { Button, Form } from "react-bootstrap"
 import PropTypes from 'prop-types'
 import { LEVELS } from "../../../models/levels.enum";
 import { Task } from "../../../models/task.class";
-import { SassColor } from "sass";
 
 export const TaskForm = ( { add, length } ) => {
 
