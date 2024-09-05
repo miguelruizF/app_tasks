@@ -9,8 +9,6 @@ import { TaskForm } from "../pure/forms/TaskForm";
 
 //importar hoja de estilos task.scss
 import '../../styles/task.scss'
-import { SassColor } from "sass";
-// import { TaskForm } from "../pure/forms/TaskForm";
 
 export const Task_ListComponent = () => {
 
