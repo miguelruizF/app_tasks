@@ -6,6 +6,7 @@ import './App.css'
 // import { Ejempĺo1 } from './hooks/Ejempĺo1'
 import { Task_ListComponent } from './components/container/Task_List'
 import { LoginFormik } from './components/pure/forms/LoginFormik'
+import { RegisterFormik } from './components/pure/forms/RegisterFormik'
 // import { OptionalRender } from './components/pure/OptionalRender'
 // import { GreetingStyled } from './components/pure/GreetingStyled'
 
@@ -31,7 +32,8 @@ function App() {
       {/* <OptionalRender/> */}
 
       {/* Ejemplo de uso de Formik y yup */}
-      <LoginFormik/>
+      {/* <LoginFormik/> */}
+      <RegisterFormik/>
     </>
   )
 }
