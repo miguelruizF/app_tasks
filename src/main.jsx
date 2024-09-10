@@ -7,9 +7,11 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 // ! NOTA: Estilos propios deben ir debajo de bootstrap
 import './index.css'
+import AppRoutingOne from './AppRoutingOne.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    <AppRoutingOne/>
   </React.StrictMode>,
 )
