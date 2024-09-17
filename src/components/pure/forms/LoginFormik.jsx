@@ -1,6 +1,7 @@
 // import React from 'react'
 
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useNavigate } from "react-router-dom";
 import * as Yup from 'yup';
 
 const loginSchema = Yup.object().shape(
@@ -16,6 +17,8 @@ export const LoginFormik = () => {
         email: '',
         password: ''
     }
+
+    const history = useNavigate();
 
     return (
         <>

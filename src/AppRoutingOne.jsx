@@ -1,13 +1,24 @@
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link, Navigate} from "react-router-dom";
 import { HomePage } from "./pages/home/HomePage";
 import { NotFoundPage } from "./pages/404/NotFoundPage";
 import { AboutPage } from "./pages/about-faqs/AboutPage";
 import { ProfilePage } from "./pages/profile/ProfilePage";
 import { TaskPage } from "./pages/tasks/TaskPage";
 import { TaskDetailPage } from "./pages/tasks/TaskDetailPage";
+import { LoginPage } from "./pages/auth/LoginPage";
+import { useEffect } from "react";
 
 
 function AppRoutingOne() {
+
+  let logged = false;
+
+  useEffect(() => {
+    logged = localStorage.getItem('credentials');
+    console.log('user logged?', logged);
+  }, []);
+  
+
   return (
     <>
     {/* Router: Define a set of routes */}
@@ -19,6 +30,7 @@ function AppRoutingOne() {
             <Link to={'/profile'}> | PROFILE |</Link>
             <Link to={'/faqs'}> | FAQs |</Link>
             <Link to={'/any404'}> | No Existing Route |</Link>
+            <Link to={'/login'}> | Login |</Link>
           </aside>
 
           <main>
@@ -26,8 +38,13 @@ function AppRoutingOne() {
             <Routes>
               {/* if there is any route that is exact, load the route */}
               <Route path="/" Component={ HomePage }/>
+              <Route path="/login" element={ 
+                logged ? <HomePage/> : <LoginPage />
+              }/>
               <Route path="/about" Component={ AboutPage } />
-              <Route path="/profile" Component={ ProfilePage }/>
+              <Route path="/profile" element={ 
+                  logged ? <ProfilePage/> : <Navigate replace to={'/login'}/>
+                } />
               <Route path="/faqs" Component={ AboutPage } />
               <Route path="/tasks" Component={ TaskPage } />
               <Route path="/tasks/:id" Component={ TaskDetailPage } />
