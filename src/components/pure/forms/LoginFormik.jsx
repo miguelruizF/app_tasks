@@ -35,7 +35,8 @@ export const LoginFormik = () => {
                     await new Promise( (response) => { setTimeout(response, 1000) } );
                     alert(JSON.stringify(values, null, 2));
                     //We save the data in the localStorage
-                    localStorage.setItem('credentials', values)
+                    await localStorage.setItem('credentials', values);
+                    history('/profile');
                 }}
             >
                 {/* We obtain props from Formik */}

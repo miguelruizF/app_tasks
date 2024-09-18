@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes, Link, Navigate} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link, Navigate, useParams} from "react-router-dom";
 import { HomePage } from "./pages/home/HomePage";
 import { NotFoundPage } from "./pages/404/NotFoundPage";
 import { AboutPage } from "./pages/about-faqs/AboutPage";
@@ -12,6 +12,20 @@ import { useEffect } from "react";
 function AppRoutingOne() {
 
   let logged = false;
+  // let params = useParams();
+
+  let taskList = [
+    {
+      id: 1,
+      name: 'Task 1',
+      description: 'My First Ask'
+    },
+    {
+      id: 2,
+      name: 'Task 2',
+      description: 'My Second Ask'
+    }
+  ];
 
   useEffect(() => {
     logged = localStorage.getItem('credentials');
@@ -29,6 +43,8 @@ function AppRoutingOne() {
             <Link to={'/about'}> | ABOUT |</Link>
             <Link to={'/profile'}> | PROFILE |</Link>
             <Link to={'/faqs'}> | FAQs |</Link>
+            <Link to={'/task/1'}> | Task 1 |</Link>
+            <Link to={'/task/2'}> | Task 2 |</Link>
             <Link to={'/any404'}> | No Existing Route |</Link>
             <Link to={'/login'}> | Login |</Link>
           </aside>
@@ -47,7 +63,8 @@ function AppRoutingOne() {
                 } />
               <Route path="/faqs" Component={ AboutPage } />
               <Route path="/tasks" Component={ TaskPage } />
-              <Route path="/tasks/:id" Component={ TaskDetailPage } />
+              {/* <Route exact path="/task/:id" render={({ match }) => (<TaskDetailPage task={taskList[match.params.id-1]}/>) } /> */}
+              <Route exact path="/task/:id" element={ <TaskDetailPage task={taskList[1]}/>}/>
               {/* otherwise, load another route */}
               <Route path={'*'} Component={ NotFoundPage }/>
             </Routes>
