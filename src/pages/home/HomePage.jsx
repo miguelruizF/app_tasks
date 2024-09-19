@@ -13,6 +13,16 @@ export const HomePage = () => {
         history(path)
     }
 
+    const navigateProps = (path) => {
+        history({
+            pathname: path,
+            search: '?online=true', //Query params
+            state: {
+                online: true,
+            }
+        });
+    }
+
     const goBack = () => {
         history(-1);
     }
@@ -26,6 +36,7 @@ export const HomePage = () => {
             <h1>Home Page</h1>
             <div>
                 <button onClick={ () => navigate('/profile') }>Go to Profile</button>
+                <button onClick={ () => navigateProps('/online-state') }>Go to Page with State / Query Params</button>
             </div>
         </div>
     )

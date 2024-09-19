@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes, Link, Navigate, useParams} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link, Navigate} from "react-router-dom";
 import { HomePage } from "./pages/home/HomePage";
 import { NotFoundPage } from "./pages/404/NotFoundPage";
 import { AboutPage } from "./pages/about-faqs/AboutPage";
@@ -7,14 +7,14 @@ import { TaskPage } from "./pages/tasks/TaskPage";
 import { TaskDetailPage } from "./pages/tasks/TaskDetailPage";
 import { LoginPage } from "./pages/auth/LoginPage";
 import { useEffect } from "react";
+import { PropsPage } from "./pages/home/PropsPage";
 
 
 function AppRoutingOne() {
 
-  let logged = false;
+  let logged = true;
   // let params = useParams();
-
-  let taskList = [
+  const taskList = [
     {
       id: 1,
       name: 'Task 1',
@@ -28,7 +28,7 @@ function AppRoutingOne() {
   ];
 
   useEffect(() => {
-    logged = localStorage.getItem('credentials');
+    let logged = localStorage.getItem('credentials');
     console.log('user logged?', logged);
   }, []);
   
@@ -54,6 +54,8 @@ function AppRoutingOne() {
             <Routes>
               {/* if there is any route that is exact, load the route */}
               <Route path="/" Component={ HomePage }/>
+              {/* State page */}
+              <Route path="/online-state" Component={ PropsPage }/>
               <Route path="/login" element={ 
                 logged ? <HomePage/> : <LoginPage />
               }/>
@@ -63,8 +65,7 @@ function AppRoutingOne() {
                 } />
               <Route path="/faqs" Component={ AboutPage } />
               <Route path="/tasks" Component={ TaskPage } />
-              {/* <Route exact path="/task/:id" render={({ match }) => (<TaskDetailPage task={taskList[match.params.id-1]}/>) } /> */}
-              <Route exact path="/task/:id" element={ <TaskDetailPage task={taskList[1]}/>}/>
+              <Route path="/task/:id" element={ <TaskDetailPage tasks={taskList}/> } />
               {/* otherwise, load another route */}
               <Route path={'*'} Component={ NotFoundPage }/>
             </Routes>
@@ -74,5 +75,6 @@ function AppRoutingOne() {
     </>
   )
 }
+
 
 export default AppRoutingOne;

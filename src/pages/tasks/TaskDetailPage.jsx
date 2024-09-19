@@ -2,9 +2,15 @@ import { useParams } from "react-router-dom"
 
 // import React from 'react'
 
-export const TaskDetailPage = ({ task }) => {
+export const TaskDetailPage = ({ tasks }) => {
 
     const { id } = useParams();
+
+    const task = tasks.find((task) => task.id === parseInt(id));
+
+    if(!task){
+        return <div>Task not found</div>
+    }
 
     return (
         <>
