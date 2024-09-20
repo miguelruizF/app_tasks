@@ -1,26 +1,20 @@
-import { useLocation, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 // import React from 'react'
 
 export const HomePage = () => {
 
-    const location = useLocation();
+    // const location = useLocation();
 
     /* use useNavigate instead of useHistory (deprecated) */
     const history = useNavigate();
 
-    const navigate = (path) => {
-        history(path)
-    }
-
-    const navigateProps = (path) => {
-        history({
-            pathname: path,
-            search: '?online=true', //Query params
-            state: {
-                online: true,
-            }
-        });
+    const handleNavigate = (path, params= {}, state = null) => {
+        const searchParams = new URLSearchParams(params).toString();
+        history(path, {
+            search: searchParams ?  `?${searchParams}` : '',
+            state: state
+        })
     }
 
     const goBack = () => {
@@ -35,8 +29,8 @@ export const HomePage = () => {
         <div>
             <h1>Home Page</h1>
             <div>
-                <button onClick={ () => navigate('/profile') }>Go to Profile</button>
-                <button onClick={ () => navigateProps('/online-state') }>Go to Page with State / Query Params</button>
+                <button onClick={ () => handleNavigate('/profile') }>Go to Profile</button>
+                <button onClick={ () => handleNavigate('/online-state', { online: 'true' }, { online: true }) }>Go to Page with State / Query Params</button>
             </div>
         </div>
     )
