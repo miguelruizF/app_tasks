@@ -5,7 +5,7 @@ import { LoginPage } from "./pages/auth/LoginPage";
 import { HomePage } from "./pages/home/HomePage";
 
 function AppRoutingFinal() {
-
+  //TODO: Change to value from sessionStorage
   const logged = true;
 
   return (
