@@ -10,22 +10,21 @@ function AppRoutingFinal() {
 
   return (
     <>
-    <Router>
-      <Routes>
-        {/* Redirections to protect our routes */}
-        <Route path="/" element={
-          logged ? <Dashboard/> : <LoginPage/>
-        }/>
-        {/* Login Route */}
-        <Route exact path="/login" element={ <LoginPage/> }/>
-        {/* Dashboard Route */}
-        <Route path="/dashboard" element={
-          logged ? <Dashboard/> : <LoginPage/>
-        }/>
-        <Route path="*" element={ <NotFoundPage/> }/>
-      </Routes>
-    </Router>
-    <Dashboard/>
+      <Router>
+        <Routes>
+          {/* Redirections to protect our routes */}
+          <Route path="/" element={
+            logged ? <Dashboard/> : <LoginPage/>
+          }/>
+          {/* Login Route */}
+          <Route exact path="/login" element={ <LoginPage/> }/>
+          {/* Dashboard Route */}
+          <Route path="/dashboard" element={
+            logged ? <Dashboard/> : <LoginPage/>
+          }/>
+          <Route path="*" element={ <NotFoundPage/> }/>
+        </Routes>
+      </Router>
     </>
   )
 }
