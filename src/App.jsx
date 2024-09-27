@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       {/* Componente de listado de tareas */}
-      <Task_ListComponent />
+      {/* <Task_ListComponent /> */}
       
       {/* <Ejempĺo1/> */}
       {/*  <Ejemplo2/> */}
@@ -34,6 +34,8 @@ function App() {
       {/* Ejemplo de uso de Formik y yup */}
       {/* <LoginFormik/> */}
       {/* <RegisterFormik/> */}
+
+      {/* Ejemplos de procesos Asyncronos */}
     </>
   )
 }
