@@ -5,6 +5,7 @@ import './App.css'
 // import { Ejemplo2 } from './hooks/Ejemplo2'
 // import { Ejempĺo1 } from './hooks/Ejempĺo1'
 import { Task_ListComponent } from './components/container/Task_List'
+import { AsyncExamples } from './components/pure/AsyncExamples'
 // import { LoginFormik } from './components/pure/forms/LoginFormik'
 // import { RegisterFormik } from './components/pure/forms/RegisterFormik'
 // import { OptionalRender } from './components/pure/OptionalRender'
@@ -36,6 +37,7 @@ function App() {
       {/* <RegisterFormik/> */}
 
       {/* Ejemplos de procesos Asyncronos */}
+      <AsyncExamples />
     </>
   )
 }

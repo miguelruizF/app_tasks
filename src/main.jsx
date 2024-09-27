@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-// import App from './App.jsx'
+import App from './App.jsx'
 //Añadimos bootstrap
 import 'bootstrap/dist/css/bootstrap.css' 
 //Boostrap icons
@@ -12,8 +12,8 @@ import AppRoutingFinal from './AppRoutingFinal.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* <App /> */}
+    <App />
     {/* <AppRoutingOne/> */}
-    <AppRoutingFinal/>
+    {/* <AppRoutingFinal/> */}
   </React.StrictMode>,
 )
