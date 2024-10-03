@@ -72,6 +72,15 @@ export const AsyncExamples = () => {
         }
     }
 
+    const multiplePromise = async () => {
+        let result = await Promise.all(
+            [
+                fetch('https://reqres.in/api/users'),
+                fetch('https://reqres.in/api/users?page=2'),
+            ]
+        ).catch((error) => alert(`Something went wrong with your URL: ${error} check your console`))
+    }
+
     return (
         <>
             <h1>Async, Promise Examples</h1>
@@ -81,6 +90,7 @@ export const AsyncExamples = () => {
             <Button onClick={obtainMessage}>Receive message in 2 seconds</Button>
             <Button onClick={consumeError}>Obtain Error</Button>
             <Button onClick={urlNotFound}>Request to Unknown URL</Button>
+            <Button onClick={multiplePromise}>Multiple Promises</Button>
         </>
     )
 }
