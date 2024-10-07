@@ -5,6 +5,7 @@ import './App.css'
 // import { Ejemplo2 } from './hooks/Ejemplo2'
 // import { Ejempĺo1 } from './hooks/Ejempĺo1'
 import { Task_ListComponent } from './components/container/Task_List'
+import { FetchExample } from './components/pure/FetchExample'
 import { ObservableExample } from './components/pure/ObservableExample'
 // import { AsyncExamples } from './components/pure/AsyncExamples'
 // import { LoginFormik } from './components/pure/forms/LoginFormik'
@@ -41,6 +42,9 @@ function App() {
       {/* <AsyncExamples /> */}
 
       {/* <ObservableExample/> */}
+
+      {/* Ejemplos de Fetch*/}
+      <FetchExample />
     </>
   )
 }
