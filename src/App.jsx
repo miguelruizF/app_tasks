@@ -40,7 +40,7 @@ function App() {
       {/* Ejemplos de procesos Asyncronos */}
       {/* <AsyncExamples /> */}
 
-      <ObservableExample/>
+      {/* <ObservableExample/> */}
     </>
   )
 }
