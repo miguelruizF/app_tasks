@@ -1,7 +1,6 @@
 // import React from 'react'
 import { useEffect, useState } from "react"
 import { getAllPagedUsers, getAllUsers, getUsersDetails } from "../../services/fetchService"
-import { Height } from "@mui/icons-material";
 
 export const FetchExample = () => {
 
