@@ -3,7 +3,7 @@ import getRandomUser from '../../services/axiosService';
 
 export const AxiosExample = () => {
 
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
         obtainUser();
@@ -13,9 +13,9 @@ export const AxiosExample = () => {
         getRandomUser()
             .then((response) => {
                 if(response.status === 200){
-                    setUser(response.data.results);
+                    setUser(response.data.results[0]);
                 }
-                // console.log(response)
+                // console.log(response.data.results[0])
             })
             .catch((error) => alert(`Something went wrong: ${error}`))
     }
@@ -24,18 +24,17 @@ export const AxiosExample = () => {
         <>
             <h1>Axios Example</h1>
             {
-                user != null ? (
+                user !== null ? (
                 <div>
                     <h2>{ user.name.title } { user.name.first } { user.name.last }</h2>
                     <h3>{ user.email }</h3>
                     <img src={user.picture.large} alt="avatar" />
-                </div>) : (
-                    <div>
-                        <p>Generate a new user</p>
-                        <button onClick={ obtainUser }>Random User</button>
-                    </div>
-                )
+                </div>) : null
             }
+            <div>
+                <p>Generate a new user</p>
+                <button onClick={ obtainUser }>Random User</button>
+            </div>
         </>
     )
 }
