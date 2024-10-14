@@ -5,6 +5,7 @@ import './App.css'
 // import { Ejemplo2 } from './hooks/Ejemplo2'
 // import { Ejempĺo1 } from './hooks/Ejempĺo1'
 import { Task_ListComponent } from './components/container/Task_List'
+import { AxiosCRUDExample } from './components/pure/AxiosCRUDExample'
 import { AxiosExample } from './components/pure/AxiosExample'
 // import { FetchExample } from './components/pure/FetchExample'
 // import { ObservableExample } from './components/pure/ObservableExample'
@@ -48,7 +49,10 @@ function App() {
       {/* <FetchExample /> */}
 
       {/* Ejemplo de Axios */}
-      <AxiosExample/>
+      {/* <AxiosExample/> */}
+
+      {/* Ejemplo de login con Axios */}
+      <AxiosCRUDExample/>
     </>
   )
 }
