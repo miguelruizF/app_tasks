@@ -1,6 +1,6 @@
 // import React from 'react'
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { login } from "../../services/axiosCRUDService";
+import { getAllPagedUsers, getAllUsers, getUsersById, login } from "../../services/axiosCRUDService";
 import * as Yup from 'yup';
 
 const loginSchema = Yup.object().shape(
@@ -34,6 +34,31 @@ export const AxiosCRUDExample = () => {
             }
             )
             .finally(() => console.log('Login done'))
+    }
+
+    //CRUD Example
+    const obtainAllUsers = () => {
+        getAllUsers()
+            .then((response) => {
+                alert(JSON.stringify(response.data.data));
+            })
+            .catch((error) => alert(`Something went wrong: ${error}`))
+    }
+
+    const obtainAllPagedUsers = (page) => {
+        getAllPagedUsers(page)
+            .then((response) => {
+                alert(JSON.stringify(response.data.data));
+            })
+            .catch((error) => alert(`Something went wrong: ${error}`))
+    }
+
+    const obtainUsersById = (id) => {
+        getUsersById(id)
+            .then((response) => {
+                alert(JSON.stringify(response.data.data));
+            })
+            .catch((error) => alert(`Something went wrong: ${error}`))
     }
 
     return (
@@ -90,6 +115,13 @@ export const AxiosCRUDExample = () => {
                     </>
                 )}
             </Formik>
+
+            {/* Example buttons to test API responses */}
+            <div>   
+                <button onClick={obtainAllUsers}>Get All Users with Axios</button>
+                <button onClick={ () => obtainAllPagedUsers(1) }>Get All page 1 with Axios</button>
+                <button onClick={ () => obtainUsersById(1) }>Get Users By ID with Axios</button>
+            </div>
         </>
     )   
 }
