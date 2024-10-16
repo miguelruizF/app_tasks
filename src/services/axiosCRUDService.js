@@ -32,6 +32,30 @@ export const getAllPagedUsers = (page) => {
 export const getUsersById = (id) => {
     return Axios.get(`https://reqres.in/api/users/${id}`);
 }
+
 //TODO: Create user
-//TODO: Update user
+export const createUser = (name, job) => {
+    let body = {
+        name: name,
+        job: job
+    }
+
+    //returns the response with a Promise
+    return Axios.post('https://reqres.in/api/users', body);
+}
+
+//TODO: Update user 
+export const updateUser = (name, job, id) => {
+    let body = {
+        name: name,
+        job: job
+    }
+
+    //returns the response with a Promise
+    return Axios.put(`https://reqres.in/api/users/${id}`, body);
+}
+
 //TODO: Delete  user
+export const deleteUserById = (id) => {
+    return Axios.delete(`https://reqres.in/api/users/${id}`);
+}

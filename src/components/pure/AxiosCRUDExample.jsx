@@ -1,6 +1,6 @@
 // import React from 'react'
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { getAllPagedUsers, getAllUsers, getUsersById, login } from "../../services/axiosCRUDService";
+import { createUser, deleteUserById, getAllPagedUsers, getAllUsers, getUsersById, login, updateUser } from "../../services/axiosCRUDService";
 import * as Yup from 'yup';
 
 const loginSchema = Yup.object().shape(
@@ -61,6 +61,43 @@ export const AxiosCRUDExample = () => {
             .catch((error) => alert(`Something went wrong: ${error}`))
     }
 
+    const createNewUser = (name, job) => {
+        createUser(name,job)
+            .then((response) => {
+                if(response.data && response.status === 201){ //Esto se puede replicar en las demas funciones para controlar las respuestas
+                    alert(JSON.stringify(response.data));
+                }else{
+                    throw new Error('User not created');
+                }
+            })
+            .catch((error) => alert(`Something went wrong: ${error}`))
+    }
+
+    const updateUserByID = (name, job, id) => {
+        updateUser(name, job, id)
+            .then((response) => {
+                if(response.data && response.status === 200){
+                    alert(JSON.stringify(response.data));
+                }else{
+                    throw new Error('User not updated');
+                }
+            })
+            .catch((error) => alert(`Something went wrong: ${error}`))
+    }
+
+    const deleteUser = (id) => {
+        deleteUserById(id)
+            .then((response) => {
+                if(response.status === 204){
+                    // alert(JSON.stringify(response.data));
+                    alert(`User with id: ${id} successfully deleted`);
+                }else{
+                    throw new Error('User not deleted');
+                }
+            })
+            .catch((error) => alert(`Something went wrong: ${error}`))
+    }
+
     return (
         <>
             {/* <button onClick={ authUser }>Login</button> */}
@@ -83,7 +120,7 @@ export const AxiosCRUDExample = () => {
                 }}
             >
                 {/* We obtain props from Formik */}
-                {({ errors, touched, isSubmitting, handleChange, handleBlur }) => (
+                {({ errors, touched, isSubmitting}) => (
                     <>
                         <Form>
                             <label htmlFor="email">Email</label>
@@ -121,6 +158,9 @@ export const AxiosCRUDExample = () => {
                 <button onClick={obtainAllUsers}>Get All Users with Axios</button>
                 <button onClick={ () => obtainAllPagedUsers(1) }>Get All page 1 with Axios</button>
                 <button onClick={ () => obtainUsersById(1) }>Get Users By ID with Axios</button>
+                <button onClick={ () => createNewUser('morpheus', 'leader') }>Create New User</button>
+                <button onClick={ () => updateUserByID('morpheus', 'zion resident',1) }>Update user</button>
+                <button onClick={ () => deleteUser(2) }>Delete user</button>
             </div>
         </>
     )   
